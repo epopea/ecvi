@@ -3,12 +3,12 @@ This repository includes a body of scripts and data used to estimate our propose
 
 # Repository content
 In this respository you will find the following material:
-* Script for the estimation of the CEVI index (**Final Script.R**);
-* Script for the production of radar charts (**Radar Charts.R**)
-* Script for the production of dimensional decompositions (**Barplot with Multi Legend.R**)
-* Script for unidimensional cutoffs (**Cutoffs.R**)
-* Script for the optimal identification of multidimensional cutoffs (sensitivity and dominance analysis) (**CEVI Functions.R**)
-* Data on health, socioeconomic, infrastructure, and climate extreme variables (**CEVI data.RData**)
+* Script for the estimation of the CEVI index (<tt>Final Script.R</tt>);
+* Script for the production of radar charts (<tt>Radar Charts.R</tt>)
+* Script for the production of dimensional decompositions (<tt>Barplot with Multi Legend.R</tt>)
+* Script for unidimensional cutoffs (<tt>Cutoffs.R</tt>)
+* Script for the optimal identification of multidimensional cutoffs (sensitivity and dominance analysis) (<tt>CEVI Functions.R</tt>)
+* Data on health, socioeconomic, infrastructure, and climate extreme variables (<tt>CEVI data.RData</tt>)
   
 # Citation and Acknowledgements
 All scripts are available for use. However, when using the material provided in this repository, please cite our work appropriately, as follows:
