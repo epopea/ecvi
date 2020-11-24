@@ -38,7 +38,7 @@ Please, when you use CEVI material give the appropriate credit to this repositor
   <code>commit = {38d4d72}</code>\
   <code>}</code>
   
-  - For the formulas and methodology that supports the cognitive affinity network approach:\
+  - For the formulas and methodology that supports CEVI:\
   \
   <code>@article{andrade_2020_cevi,</code>\
   <code>title={Health vulnerability related to climate extremes in Amazonia and the Northeast region of Brazil},</code>\
