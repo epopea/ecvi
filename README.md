@@ -13,7 +13,7 @@ In this respository you will find the following material:
 # Citation and Acknowledgements
 All scripts are available for use. However, when using the material provided in this repository, please cite our work appropriately, as follows:
 
-Epopea Research Group (2020). *The estimation of a Climate Extreme Vulnerability Index (CEVI)*. Available at: <https://github.com/epopea/cevi>.
+Epopea Research Group (2020). *The estimation of a Climate Extreme Vulnerability Index (CEVI)*. Available at: <https://github.com/epopea/cevi.git>.
 
 # References
 * Alkire, S., & Foster, J. (2011). Counting and multidimensional poverty measurement. *Journal of public economics*, 95(7-8), 476-487.
