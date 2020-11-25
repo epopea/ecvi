@@ -1,7 +1,7 @@
 # CEVI - Climate Extreme Vulnerability Index #
 
-# Date: Nov 10, 2020
-# Programmers' email: gilvan@epopea.com.br
+# Date: Nov 25, 2020
+# Programmers' email: jeferson@epopea.com.br
 
 #------Setup--------
 # Initial settings #
