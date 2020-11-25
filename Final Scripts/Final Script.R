@@ -149,7 +149,7 @@ table(data$Regiao)
 data$Regiao <- factor(data$Regiao,
                       levels=c(1,2),
                       labels=c("Amazonia","Northeast"))
-sensitivity(data = data, grouping.var = as.name("Regiao"), weights = ~Total,ids = 1, 
+sensitivity(data = data, grouping.var = "Regiao", weights = "Total",ids = 1, 
             formula = ~ TXxd + TNxd + TX90pd + TN90pd + DTRd + Cddd + R99pd +
             elderly + children + pcincome + literate +
             sewage + water + garbage + urb,

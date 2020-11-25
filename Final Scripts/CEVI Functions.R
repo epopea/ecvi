@@ -334,7 +334,7 @@ sensitivity <- function(data=NULL,
     stargazer::stargazer(sensitivity_overall, ...)
     for(i in 1:length(sensitivity_list)){
       cat(paste0("\n Vulnerability estimates by varying cutoff levels - ",
-                 unique(pull(select(data, grouping.var)))[i],
+                 unique(data[grouping.var])[i,1],
                  ", Brazil, 2010"))
       stargazer::stargazer(sensitivity_list[[i]], ... )
     }
