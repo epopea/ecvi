@@ -171,6 +171,18 @@ ecvi(data = high_cwet_data,
      decompose = TRUE, index = TRUE,
      length = c(7, 5, 6))
 
+#--------------Radar charts--------------
+# GRAPHICAL REPRESENTATION (RADARCHART) #
+#---------------------------------------#
+
+source("Final Scripts/Radar Charts.R")
+
+#---------Decomposition Graphs---------
+# GRAPHICAL REPRESENTATION (BARPLOTS) #
+#-------------------------------------#
+
+source("Final Scripts/Barplots and Boxplots.R")
+
 #-----------Sensitivity---------------
 # SENSITIVITY AND DOMINANCE ANALYSIS #
 #------------------------------------#
@@ -190,17 +202,7 @@ sensitivity(data = data, grouping.var = "dzone", weights = "total",ids = 1,
             dominance = TRUE, summary = F, type = "text")
 
 
-#--------------Radar charts--------------
-# GRAPHICAL REPRESENTATION (RADARCHART) #
-#---------------------------------------#
 
-source("Final Scripts/Radar Charts.R")
-
-#---------Decomposition Graphs---------
-# GRAPHICAL REPRESENTATION (BARPLOTS) #
-#-------------------------------------#
-
-source("Final Scripts/Barplots and Boxplots.R")
 
 #------------------------#
 # DESCRIPTIVE STATISTICS #
