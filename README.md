@@ -33,7 +33,7 @@ Please, when you use the ECVI material from this GitHub give the appropriate cre
   <code>@misc{epopea_2021,</code>\
   <code>author = {EPOPEA Research Group},</code>\
   <code>title = {The estimation of an Extreme Climate Vulnerability Index (ECVI)},</code>\
-  <code>year = {2020},</code>\
+  <code>year = {2021},</code>\
   <code>publisher = {GitHub},</code>\
   <code>journal = {GitHub repository},</code>\
   <code>howpublished = {\url{https://github.com/epopea/ecvi.git}},</code>\
