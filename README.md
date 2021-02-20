@@ -57,4 +57,5 @@ Please, when you use the ECVI material from this GitHub give the appropriate cre
 * Evans, M. E., N. Hastings and B. Peacock. (2000). *Statistical Distributions*. New York: John Wiley & Sons.
 * Manton, K. G., M. A. Woodbury and H. D. Tolley. (1994). *Statistical Applications Using Fuzzy Sets*. New York: John Wiley & Sons.
 * Erosheva, E. A., S. E. Fienberg and C. Joutard. (2007). Describing disability through individual-level mixture models for multivariate binary data. *The Annals of Applied Statistics*, 1, 502–537.
+* Xavier, A. C. & King, C, W & Scanlon, B, R. (2016). Daily gridded meteorological variables in Brazil 724 (1980–2013). *International Journal of Climatology*, 36(6), 2644-2659.
 
