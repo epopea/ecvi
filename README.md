@@ -32,7 +32,7 @@ Please, when you use the ECVI material from this GitHub give the appropriate cre
   \
   <code>@misc{epopea_2021,</code>\
   <code>author = {EPOPEA Research Group},</code>\
-  <code>title = {The estimation of an Extreme Climate Vulnerability Index (CEVI)},</code>\
+  <code>title = {The estimation of an Extreme Climate Vulnerability Index (ECVI)},</code>\
   <code>year = {2020},</code>\
   <code>publisher = {GitHub},</code>\
   <code>journal = {GitHub repository},</code>\
@@ -42,13 +42,13 @@ Please, when you use the ECVI material from this GitHub give the appropriate cre
   
   - For the formulas and methodology that support CEVI:\
   \
-  <code>@article{andrade_2020_cevi,</code>\
+  <code>@article{andrade_etal_XXXX,</code>\
   <code>title={Health vulnerability related to climate extremes in Amazonia and the Northeast region of Brazil},</code>\
   <code>author={Andrade, L. and Guedes, G. and Noronha, K. and Silva, C. and Andrade, J. },</code>\
   <code>journal={PlosOne},</code>\
   <code>volume={XX},</code>\
   <code>pages={XX-XX},</code>\
-  <code>year={2020},</code>\
+  <code>year={XXXX},</code>\
   <code>publisher={Public Library of Science}</code>\
   <code>}</code>
 
