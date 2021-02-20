@@ -20,7 +20,7 @@ lapply(myPackages, require, character.only = TRUE)
 
 # Defining the path and reading the data frame
 
-setwd("C:\\Users\\Jeferson\\Desktop\\CEVI")
+
 data <- readxl::read_excel(path="Datasets/dados_novos.xlsx")
 
 # Renaming variable names
