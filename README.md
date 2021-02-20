@@ -24,7 +24,7 @@ Please, when you use the ECVI material from this GitHub give the appropriate cre
   
   - For the formulas and methodology that supports the ECVI:\
   \
-    Andrade, L., Guedes, G., Noronha, K., Silva, C. (forthcoming). Health-Related Vulnerability to Climate Extremes in homoclimatic zones of Amazonia and the Northeast Region of Brazil. *PlosOne*.
+    Andrade, L., Guedes, G., Noronha, K., Silva, C., Andrade, J. (forthcoming). Health-Related Vulnerability to Climate Extremes in homoclimatic zones of Amazonia and the Northeast Region of Brazil. *PlosOne*.
     
 * **Bibtex format**:
 
@@ -44,7 +44,7 @@ Please, when you use the ECVI material from this GitHub give the appropriate cre
   \
   <code>@article{andrade_2020_cevi,</code>\
   <code>title={Health vulnerability related to climate extremes in Amazonia and the Northeast region of Brazil},</code>\
-  <code>author={Andrade, L. and Guedes, G. and Noronha, K. and Silva, C. and Silva, P. and Spyrides, M. H.},</code>\
+  <code>author={Andrade, L. and Guedes, G. and Noronha, K. and Silva, C. and Andrade, J. },</code>\
   <code>journal={PlosOne},</code>\
   <code>volume={XX},</code>\
   <code>pages={XX-XX},</code>\
