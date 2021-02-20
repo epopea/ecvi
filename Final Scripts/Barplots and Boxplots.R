@@ -152,13 +152,7 @@ ggplot(gom_boxdata1, aes(y = Value, fill = factor(median), group = CDD)) +
   geom_abline(intercept = 0.25, slope = 0) + 
   theme(legend.position = "bottom") +
   labs(y = "CDD")
-ggplot(gom_boxdata1, aes(y = Value, fill = factor(median), group = CDD)) +
-  geom_boxplot() +
-  geom_abline(intercept = 0.25, slope = 0) + 
-  theme(legend.position = "bottom") +
-  labs(y = "CDD")
 dev.off()
-boxplot(gom_boxdata$lambda_1_1, angle=c(45, 0, 45, 0), density=seq(10,30,15))
 
 
 gom_boxdata2 <- gom_boxdata %>% 
