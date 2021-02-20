@@ -3,98 +3,81 @@
 #Both Regions
 expcut <- rep(1, 7)
 
-names(expcut) <- data %>% select(TXx, TNx, TX90p, TN90p, DTR, Cdd, R99p) %>% names
+names(expcut) <- data %>% select(TXx, TNx, TX90p, TN90p, DTR, Cdd, R99p) %>% names()
 expcut
 
-#North
-north_expcut <- expcut
+#Wet Homoclimatic Zone
+wet_expcut <- expcut
 
-#Northeast
-northeast_expcut <- expcut
+#Dry Homoclimatic Zone
+dry_expcut <- expcut
 
 # Cutoffs for susceptibility #
 
-data %>% filter(Regiao==1) %>%
-  filter(old>quantile(old,probs=c(0.75))) %>%
-  mutate(elderly=0) %>%
-  select(Mesorregião,elderly) -> x
-data %>% filter(Regiao==1) %>%
-  filter(old<=quantile(old,probs=c(0.75))) %>%
-  mutate(elderly=1) %>%
-  select(Mesorregião,elderly) -> y
+data %<>% group_by(dzone) %>%
+  mutate(elderly = case_when(
+    old>quantile(old,probs=c(0.75)) ~ 0,
+    old<=quantile(old,probs=c(0.75)) ~ 1),
+        children = case_when(
+    kid>quantile(kid,probs=c(0.75)) ~ 0,
+    kid<=quantile(kid,probs=c(0.75)) ~ 1
+        ))
 
-data %>% filter(Regiao==2) %>%
-  filter(old>quantile(old,probs=c(0.75))) %>%
-  mutate(elderly=0) %>%
-  select(Mesorregião,elderly) -> w
-data %>% filter(Regiao==2) %>%
-  filter(old<=quantile(old,probs=c(0.75))) %>%
-  mutate(elderly=1) %>%
-  select(Mesorregião,elderly) -> z
 
-elderly <- as.data.frame(rbind(x,y,w,z))
+table(data$elderly, data$dzone)
 
-data <- inner_join(data,elderly, by="Mesorregião", suffix = c("", ""))
-table(data$elderly, data$Regiao)
+table(data$children, data$dzone)
 
-data %>% filter(Regiao==1) %>%
-  filter(kid>quantile(kid,probs=c(0.75))) %>%
-  mutate(children=0) %>%
-  select(Mesorregião,children) -> x
-data %>% filter(Regiao==1) %>%
-  filter(kid<=quantile(kid,probs=c(0.75))) %>%
-  mutate(children=1) %>%
-  select(Mesorregião,children) -> y
-
-data %>% filter(Regiao==2) %>%
-  filter(kid>quantile(kid,probs=c(0.75))) %>%
-  mutate(children=0) %>%
-  select(Mesorregião,children) -> w
-data %>% filter(Regiao==2) %>%
-  filter(kid<=quantile(kid,probs=c(0.75))) %>%
-  mutate(children=1) %>%
-  select(Mesorregião,children) -> z
-
-children <- as.data.frame(rbind(x,y,w,z))
-
-data <- inner_join(data,children, by="Mesorregião", suffix = c("", ""))
-table(data$children, data$Regiao)
-
-suscut <- c(rep(1,2),255,quantile(data$literate,probs=c(0.25)))
-names(suscut) <- c("Elderly","Children","Income","Literate")
+suscut <- c(rep(1,2),
+            255,
+            quantile(data$poor,probs=c(0.75)),
+            quantile(data$literate,probs=c(0.25)))
+names(suscut) <- c("Elderly","Children","Income","Poor","Literate")
 suscut
 
-north_suscut <- c(rep(1,2),255,quantile(data$literate[data$Regiao==1],probs=c(0.25)))
-names(north_suscut) <- c("Elderly","Children","Income","Literate")
-north_suscut
+wet_suscut <- c(rep(1,2),
+                255,
+                quantile(data$poor[data$dzone==1],probs=c(0.75)),
+                quantile(data$literate[data$dzone==1],probs=c(0.25)))
+names(wet_suscut) <- c("Elderly","Children","Income","Poor","Literate")
+wet_suscut
 
-northeast_suscut <- c(rep(1,2),255,quantile(data$literate[data$Regiao==2],probs=c(0.25)))
-names(northeast_suscut) <- c("Elderly","Children","Income","Literate")
-northeast_suscut
+dry_suscut <- c(rep(1,2),
+                255,
+                quantile(data$poor[data$dzone==2],probs=c(0.75)),
+                quantile(data$literate[data$dzone==2],probs=c(0.25)))
+names(dry_suscut) <- c("Elderly","Children","Income","Poor","Literate")
+dry_suscut
 
 # Cuttoffs for adaptive capacity #
 
 adapcut <- c(quantile(data$sewage,probs=c(0.25)),
              quantile(data$water,probs=c(0.25)),
              quantile(data$garbage,probs=c(0.25)),
-             quantile(data$urb,probs=c(0.25)))
+             quantile(data$urb,probs=c(0.25)),
+             quantile(data$fhs,probs=c(0.25)),
+             quantile(data$beds,probs=c(0.25)))
 
-names(adapcut) <- c("Sewage","Water","Garbage","Urbanization")
+names(adapcut) <- c("Sewage","Water","Garbage","Urbanization","Primary Care","Hospital Beds")
 round(adapcut,2)
 
-north_adapcut <- c(quantile(data$sewage[data$Regiao==1],probs=c(0.25)),
-                   quantile(data$water[data$Regiao==1],probs=c(0.25)),
-                   quantile(data$garbage[data$Regiao==1],probs=c(0.25)),
-                   quantile(data$urb[data$Regiao==1],probs=c(0.25)))
+wet_adapcut <- c(quantile(data$sewage[data$dzone==1],probs=c(0.25)),
+                   quantile(data$water[data$dzone==1],probs=c(0.25)),
+                   quantile(data$garbage[data$dzone==1],probs=c(0.25)),
+                   quantile(data$urb[data$dzone==1],probs=c(0.25)),
+                   quantile(data$fhs[data$dzone==1],probs=c(0.25)),
+                   quantile(data$beds[data$dzone==1],probs=c(0.25)))
 
-names(north_adapcut) <- c("Sewage","Water","Garbage","Urbanization")
-round(north_adapcut,2)
+names(wet_adapcut) <- c("Sewage","Water","Garbage","Urbanization","Primary Care","Hospital Beds")
+round(wet_adapcut,2)
 
-northeast_adapcut <- c(quantile(data$sewage[data$Regiao==2],probs=c(0.25)),
-                       quantile(data$water[data$Regiao==2],probs=c(0.25)),
-                       quantile(data$garbage[data$Regiao==2],probs=c(0.25)),
-                       quantile(data$urb[data$Regiao==2],probs=c(0.25)))
+dry_adapcut <- c(quantile(data$sewage[data$dzone==2],probs=c(0.25)),
+                       quantile(data$water[data$dzone==2],probs=c(0.25)),
+                       quantile(data$garbage[data$dzone==2],probs=c(0.25)),
+                       quantile(data$urb[data$dzone==2],probs=c(0.25)),
+                       quantile(data$fhs[data$dzone==2],probs=c(0.25)),
+                       quantile(data$beds[data$dzone==2],probs=c(0.25)))
 
-names(northeast_adapcut) <- c("Sewage","Water","Garbage","Urbanization")
-round(northeast_adapcut,2)
+names(dry_adapcut) <- c("Sewage","Water","Garbage","Urbanization","Primary Care","Hospital Beds")
+round(dry_adapcut,2)
 
