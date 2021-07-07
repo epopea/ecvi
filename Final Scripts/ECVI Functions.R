@@ -245,12 +245,12 @@ sensitivity <- function(data=NULL,
   
   best_k_ovr = seq(0.05, 1, 0.05)[which.min(means_vars_overall)]
   
-  if(dominance == TRUE){
+  if(dominance == TRUE & sensitivity.plot == FALSE){
     tiff(paste("dominance.tiff", sep = ""), width =6, height = 4,
          units="in", res=300)
     plot(x=sensitivity_list[[1]]$k,
          y=sensitivity_list[[1]]$ECVI.Estimate, type="l",col=1,lwd=2,
-         main="Sensitivity Analysis of the Deprivation Cuttoff\nfor ECVI across Macroregions",
+         main="",
          ylab="Index Estimate",
          ylim=c(min, max),
          xlab="Cuttoff (k)",
@@ -266,7 +266,7 @@ sensitivity <- function(data=NULL,
     cat("\n A file named dominance.tiff has been saved in your working directory")
   }
   
-  if(sensitivity.plot == TRUE){
+  if(sensitivity.plot == TRUE & dominance == FALSE){
     tiff("sensitivity.tiff", width = 6, height = 4,
          units="in", res=300)
     plot(x=sensitivity_overall$k,
@@ -291,6 +291,49 @@ sensitivity <- function(data=NULL,
     
     dev.off()
     cat("\n A file named sensitivity.tiff has been saved in your working directory")
+  }
+  if(dominance == TRUE & sensitivity.plot == TRUE){
+    tiff("sensitivity_and_dominance.tiff", width = 6, height = 4,
+         units="in", res=300)
+    par(mfrow = c(1, 2))
+    plot(x=sensitivity_overall$k,
+         y=sensitivity_overall$ECVI.Estimate, type="l",col="black",lwd=2,
+         main="Sensitivity Analysis",
+         ylab="Index Value",
+         xaxt="n",
+         ylim=c(min(sensitivity_overall$Intensity.Estimate,
+                    sensitivity_overall$Headcount.Estimate,
+                    sensitivity_overall$ECVI.Estimate, na.rm = TRUE),
+                max(sensitivity_overall$Intensity.Estimate,
+                    sensitivity_overall$Headcount.Estimate,
+                    sensitivity_overall$ECVI.Estimate, na.rm = TRUE)),
+         xlab="Cuttoff (k)")
+    axis(1, at=seq(0,1,0.05),las=2)
+    lines(x=sensitivity_overall$k,y=sensitivity_overall$Headcount.Estimate, type="l", col="grey40",lwd=2)
+    lines(x=sensitivity_overall$k,y=sensitivity_overall$Intensity.Estimate, type="l",col="grey70",lwd=2)
+    legend("topright",legend=c("ECVI","Censored Headcount","Vulnerability Intensity"),
+           col=c("black","grey40","grey70"),lwd=rep(2,3), cex=0.3,
+           bty='n')
+    abline(v=c(best_k_ovr,best_k_ovr+0.05),lty=c(1,2))
+    
+    plot(x=sensitivity_list[[1]]$k,
+         y=sensitivity_list[[1]]$ECVI.Estimate, type="l",col=1,lwd=2,
+         main="Dominance Analysis",
+         ylab="Index Estimate",
+         ylim=c(min, max),
+         xlab="Cuttoff (k)",
+         xaxt="n")
+    for(i in 2:length(sensitivity_list)){
+      lines(x=sensitivity_list[[i]]$k,y=sensitivity_list[[i]]$ECVI.Estimate, type="l", col= paste0("gray", 30 + 10*i),lwd=2)
+    }
+    axis(1, at=seq(0,1,0.05),las=2)
+    legend("topright",legend= unique(pull(data, grouping.var)),
+           col=c(1, paste0("gray", 30 + 10*(2:length(sensitivity_list)))),lwd=rep(2,length(sensitivity_list)), cex = 0.3)
+    abline(v=c(best_k_reg, best_k_reg+0.05),lty=c(1,1), lwd=1.5)
+    
+    par(mfrow = c(1,1))
+    dev.off()
+    cat("\n A file named sensitivity_and_dominance.tiff has been saved in your working directory")
   }
   
   if(sensitivity == TRUE){

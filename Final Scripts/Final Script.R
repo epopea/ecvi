@@ -11,6 +11,8 @@
 # Cleaning the environment
 rm(list=ls())
 
+
+
 # Installing the required packages
 myPackages <- c("convey", "dplyr", "magrittr", "survey", "ggplot2", "fmsb", 
                 "gtools", "broom", "maptools", "rgdal", "sp", "rgeos")
@@ -19,9 +21,14 @@ if(length(new.packages)) install.packages(new.packages)
 lapply(myPackages, require, character.only = TRUE)
 
 # Defining the path and reading the data frame
+path <- dirname(rstudioapi::getActiveDocumentContext()$path)
+directories<-strsplit(path, split = "/")
+directories<-directories[[1]][-length(directories[[1]])]
+path <- paste(directories, sep = "/", collapse = "/")
 
+setwd(path)
 
-data <- readxl::read_excel(path="Datasets/dados_novos.xlsx")
+data <- readxl::read_excel(path="Data/dados_novos.xlsx")
 
 # Renaming variable names
 
@@ -66,7 +73,9 @@ source("Final Scripts/Cutoffs.R", encoding = "utf8")
 #-------Mapping Regions-------
 # Exporting data for mapping #
 #----------------------------#
-#----------------------------#
+
+dir.create("Maps")
+
 data %>% select(zone, CD_GEOCME, region) %>% 
   mutate(map_zone = case_when(
     zone == 1 ~ 1,
